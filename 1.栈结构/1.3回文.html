@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script src="./1.1栈的构造函数.js"></script>
+<script>
+  function isPalinedrome(word) {
+    let s = new Stack();
+    for (let i = 0; i < word.length; ++i) {
+      s.push(word[i]);
+    }
+    let rword = "";
+    while (s.length() > 0) {
+      rword += s.pop();
+    }
+    return rword === word;
+  }
+  // 测试代码
+  let word = "hello";
+  if (isPalinedrome(word)) {
+    console.log(word + " " + "is a palindrome.")
+  } else {
+    console.log(word + " " + "is not a palindrome.")
+  }
+  word = "racecar";
+  if (isPalinedrome(word)) {
+    console.log(word + " " + "is a palindrome.")
+  } else {
+    console.log(word + " " + "is not a palindrome.")
+  }
+  // 输出结果
+  // hello is not a palindrome.
+  // racecar is a palindrome.
+</script>
+
+<body>
+
+</body>
+
+</html>
