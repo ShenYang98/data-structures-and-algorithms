@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script src="./1.1栈的构造函数.js"></script>
+<script>
+  function mulBase(num, base) {
+    let s = new Stack();
+    do {
+      s.push(num % base);
+      num = Math.floor(num /= base);
+    } while (num > 0)
+    let converted = "";
+    while (s.length() > 0) {
+      converted += s.pop();
+    }
+    return converted;
+  }
+  // 测试代码
+  let num = 32;
+  let base = 2;
+  let newNum = mulBase(num, base);
+  console.log(num +" "+ "converted to base" +" " + base + " "+ "is" +" "+ newNum);
+</script>
+
+<body>
+
+</body>
+
+</html>
