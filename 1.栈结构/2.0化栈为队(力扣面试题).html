@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script>
+  // 实现一个MyQueue类， 该类用两个栈来实现一个队列。
+  // 示例：
+
+  // MyQueue queue = new MyQueue();
+
+  // queue.push(1);
+  // queue.push(2);
+  // queue.peek(); // 返回 1
+  // queue.pop(); // 返回 1
+  // queue.empty(); // 返回 false
+
+  /**
+   * Initialize your data structure here.
+   */
+  var MyQueue = function () {
+    this.stack1 = [];
+    this.stack2 = [];
+  };
+
+  /**
+   * Push element x to the back of queue. 
+   * @param {number} x
+   * @return {void}
+   */
+  MyQueue.prototype.push = function (x) {
+    this.stack1.push(x);
+  };
+
+  /**
+   * Removes the element from in front of queue and returns that element.
+   * @return {number}
+   */
+  MyQueue.prototype.pop = function () {
+    while (this.stack1.length > 0) {
+      this.stack2.push(this.stack1.pop());
+    }
+    let res = this.stack2.pop();
+    while (this.stack2.length > 0) {
+      this.stack1.push(this.stack2.pop());
+    }
+    return res;
+  };
+
+  /**
+   * Get the front element.
+   * @return {number}
+   */
+  MyQueue.prototype.peek = function () {
+    while (this.stack1.length > 0) {
+      this.stack2.push(this.stack1.pop());
+    }
+    let res = this.stack2[this.stack2.length - 1];
+    this.stack1.push(this.stack2.pop());
+    return res;
+  };
+
+  /**
+   * Returns whether the queue is empty.
+   * @return {boolean}
+   */
+  MyQueue.prototype.empty = function () {
+    return this.stack1.length === 0 && this.stack2.length === 0;
+  };
+
+  /**
+   * Your MyQueue object will be instantiated and called as such:
+   * var obj = new MyQueue()
+   * obj.push(x)
+   * var param_2 = obj.pop()
+   * var param_3 = obj.peek()
+   * var param_4 = obj.empty()
+   */
+
+  // 测试代码：
+  let queue = new MyQueue();
+  queue.push(1);
+  queue.push(2);
+  console.log(queue.peek());
+  console.log(queue.pop());
+  console.log(queue.empty());
+</script>
+
+<body>
+
+</body>
+
+</html>
