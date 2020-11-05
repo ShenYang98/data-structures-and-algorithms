@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script src="./2.1队列的构造函数.js"></script>
+<script>
+  function passGame(nameList,num){
+    let queue = [];
+    for(let i = 0;i<nameList.length;i++){
+      queue.push(nameList[i]);
+    }
+    while(queue.length > 1){
+      for(let i=0;i<num-1;i++){
+        queue.push(queue.shift());
+      }
+      queue.shift();
+    }
+    return queue;
+  }
+  // 测试代码
+  let names = ["Lily","Lucy","Tom","Lilei","why"];
+  console.log(passGame(names,3)); //Lilei
+</script>
+<body>
+  
+</body>
+</html>
