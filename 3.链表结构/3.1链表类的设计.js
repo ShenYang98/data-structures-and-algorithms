@@ -20,6 +20,7 @@ function find(item) {
   return currNode;
 }
 
+
 function insert(newElement, item) {
   let newNode = new Node(newElement);
   let current = this.find(item);
