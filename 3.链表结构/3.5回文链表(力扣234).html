@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script>
+  //   请判断一个链表是否为回文链表。
+
+  // 示例 1:
+
+  // 输入: 1->2
+  // 输出: false
+  // 示例 2:
+
+  // 输入: 1->2->2->1
+  // 输出: true
+
+  // 解法1：数组
+  var isPalindrome = function (head) {
+    let arr = [];
+    while (head != null) {
+      arr.push(head.val);
+      head = head.next;
+    }
+    for (let i = 0, j = arr.length - 1; i < j; i++, j--) {
+      if (arr[i] !== arr[j]) {
+        return false;
+      }
+    }
+    return true;
+  };
+
+  // 解法2：快慢指针
+  let  reverseList = (head) => {
+    let curr = head;
+    let pre = null;
+    while(curr !== null){
+        let temp = curr.next;
+        curr.next = pre;
+        pre = curr;
+        curr = temp;
+    }
+    return pre;
+}
+
+let endOfFirstHalf =(head)=>{
+    let fast = head;
+    let slow = head;
+    while(fast.next !== null && fast.next.next !== null){
+        fast = fast.next.next;
+        slow = slow.next;
+    }
+    return slow;
+}
+
+var isPalindrome = function(head) {
+    if(head == null){
+        return true;
+    }
+    let firstHalfEnd = endOfFirstHalf(head);
+    let secondHalfStart = reverseList(firstHalfEnd.next);
+    let p1 = head;
+    let p2 = secondHalfStart;
+    let result = true;
+    while(result && p2 != null){
+        if(p1.val !== p2.val){
+            result = false;
+        }
+        p1 = p1.next;
+        p2 = p2.next;
+    }
+    firstHalfEnd.next = reverseList(secondHalfStart);
+    return result;
+};
+</script>
+
+<body>
+
+</body>
+
+</html>
