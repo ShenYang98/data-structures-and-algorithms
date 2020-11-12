@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script>
+  function BinarySearchTree() {
+    function Node(key) {
+      this.key = key;
+      this.left = null;
+      this.right = null;
+    }
+    this.root = null;
+
+    // 插入操作
+    BinarySearchTree.prototype.insert = function (key) {
+      let newNode = new Node(key);
+      if (this.root === null) {
+        this.root = newNode;
+      } else {
+        this.insertNode(this.root, newNode);
+      }
+    }
+    BinarySearchTree.prototype.insertNode = function (node, newNode) {
+      if (newNode.key < node.key) {
+        if (node.left === null) {
+          node.left = newNode;
+        } else {
+          this.insertNode(node.left, newNode);
+        }
+      } else {
+        if (node.right === null) {
+          node.right = newNode;
+        } else {
+          this.insertNode(node.right, newNode);
+        }
+      }
+    }
+
+    //遍历方式：
+    // 1、先序遍历  先处理左节点，再寻找左子树
+    BinarySearchTree.prototype.preOrderTraversal = function (handler) {
+      this.preOrderTraversalNode(this.root, handler);
+    }
+    BinarySearchTree.prototype.preOrderTraversalNode = function (node, handler) {
+      if (node !== null) {
+        handler(node.key);
+        this.preOrderTraversalNode(node.left, handler);
+        this.preOrderTraversalNode(node.right, handler);
+      }
+    }
+  }
+  let BST = new BinarySearchTree();
+  BST.insert(11)
+  BST.insert(7)
+  BST.insert(15)
+  BST.insert(5)
+  BST.insert(3)
+  BST.insert(9)
+  BST.insert(8)
+  BST.insert(10)
+  BST.insert(13)
+  BST.insert(12)
+
+  let res = "";
+  BST.preOrderTraversal(function (key) {
+    res += key + " ";
+  })
+  console.log(res);
+
+  // 中序遍历 先找到最左边的左节点，
+</script>
+
+<body>
+
+</body>
+
+</html>
