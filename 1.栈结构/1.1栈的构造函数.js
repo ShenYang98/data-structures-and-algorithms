@@ -1,5 +1,5 @@
-function Stack(){
-  this.dataStore =  [];
+function Stack() {
+  this.dataStore = [];
   this.top = 0;
   this.push = push;
   this.pop = pop;
@@ -7,18 +7,23 @@ function Stack(){
   this.clear = clear;
   this.length = length;
 }
-function push(element){
+
+function push(element) {
   this.dataStore[this.top++] = element;
 }
-function pop(){
+
+function pop() {
   return this.dataStore[--this.top];
 }
-function peek(){
-  return this.dataStore[this.top-1];
+
+function peek() {
+  return this.dataStore[this.top - 1];
 }
-function clear(){
-  this.top=0;
+
+function clear() {
+  this.top = 0;
 }
-function length(){
+
+function length() {
   return this.top;
 }

@@ -46,7 +46,7 @@
       this.preOrderTraversalNode(this.root, handler);
     }
     BinarySearchTree.prototype.preOrderTraversalNode = function (node, handler) {
-      if (node !== null) {
+      if (node !== null) {s
         handler(node.key);
         this.preOrderTraversalNode(node.left, handler);
         this.preOrderTraversalNode(node.right, handler);
@@ -64,14 +64,13 @@
   BST.insert(10)
   BST.insert(13)
   BST.insert(12)
+  BST.insert(19)
 
   let res = "";
   BST.preOrderTraversal(function (key) {
     res += key + " ";
   })
   console.log(res);
-
-  // 中序遍历 先找到最左边的左节点，
 </script>
 
 <body>
