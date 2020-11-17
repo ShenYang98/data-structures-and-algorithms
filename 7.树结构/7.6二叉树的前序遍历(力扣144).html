@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<!-- 给你二叉树的根节点 root ，返回它节点值的 前序 遍历。
+
+示例 1：
+
+
+输入：root = [1,null,2,3]
+输出：[1,2,3]
+示例 2：
+
+输入：root = []
+输出：[] -->
+<script>
+  // 解法1：递归
+  var preorderTraversal = function (root) {
+    if (!root) {
+      return [];
+    } else {
+      return [root.val, ...preorderTraversal(root.left), ...preorderTraversal(root.right)];
+    }
+  };
+
+  // 解法2：
+  var preorderTraversal = function (root) {
+    let arr = [],
+      res = [];
+    if (root) {
+      arr.push(root);
+    }
+    while (arr.length > 0) {
+      let cur = arr.pop();
+      res.push(cur.val);
+      cur.right && arr.push(cur.right);
+      cur.left && arr.push(cur.left);
+    }
+    return res;
+  };
+</script>
+
+<body>
+
+</body>
+
+</html>
