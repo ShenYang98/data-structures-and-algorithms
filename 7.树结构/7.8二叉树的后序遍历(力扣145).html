@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<!-- 给定一个二叉树，返回它的 后序 遍历。
+
+示例:
+
+输入: [1,null,2,3]  
+   1
+    \
+     2
+    /
+   3 
+
+输出: [3,2,1]
+进阶: 递归算法很简单，你可以通过迭代算法完成吗？ -->
+
+<script>
+  // 解法1：递归
+  var postorderTraversal = function (root) {
+    if (!root) {
+      return [];
+    } else {
+      return [...postorderTraversal(root.left), ...postorderTraversal(root.right), root.val];
+    }
+  };
+</script>
+
+<body>
+
+</body>
+
+</html>
