@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<!-- 给定一个二叉树，检查它是否是镜像对称的。
+
+例如，二叉树 [1,2,2,3,4,4,3] 是对称的。
+
+    1
+   / \
+  2   2
+ / \ / \
+3  4 4  3
+ 
+
+但是下面这个 [1,2,2,null,3,null,3] 则不是镜像对称的:
+
+    1
+   / \
+  2   2
+   \   \
+   3    3 -->
+
+<script>
+  var isSymmetric = function (root) {
+    // 解法1：递归
+    // const check = (left,right) => {
+    //     // 两个子树都为null，是对称的
+    //     if(left === null && right === null){    
+    //         return true;
+    //     }
+    //     // 两个子树都存在，则需要：root值相同，且他们的子树也满足镜像
+    //     if(left && right){
+    //         return left.val === right.val && check(left.left,right.right) && check(left.right,right.left);
+    //     }
+    //     // 一个子树存在一个不存在，肯定不对称
+    //     return false;
+    // }
+    // // 如果传入的root就是nmull，对称
+    // if(root === null){
+    //     return true;
+    // }
+    // // 否则，判断它的左右子树手否满足对称
+    // return check(root.left,root.right);
+
+    // 解法2：BFS
+    if (root === null) {
+      return true;
+    }
+    let queue = [];
+    // 起初入列两个子树
+    queue.push(root.left, root.right);
+    // 队列清空就结束，没有节点可入列了
+    while (queue.length) {
+      // 当前层的节点个数
+      const len = queue.length;
+      // 当前层的节点成对出列
+      for (let i = 0; i < len; i += 2) {
+        let left = queue.shift();
+        // 出列一对节点
+        let right = queue.shift();
+        // 有一个存在有一个不存在
+        if ((left && right == null) || (left == null && right)) {
+          return false;
+        }
+        // 两个都存在
+        if (left && right) {
+          // 节点值不同，不对称
+          if (left.val != right.val) {
+            return false;
+          }
+          // 推入下一层的一对节点
+          queue.push(left.left, right.right);
+          queue.push(left.right, right.left);
+        }
+      }
+    }
+    // BFS结束，始终没有返回false，则返回真
+    return true;
+  };
+</script>
+
+<body>
+
+</body>
+
+</html>
