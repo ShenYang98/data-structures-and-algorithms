@@ -7,7 +7,10 @@
   <title>Document</title>
 </head>
 <script>
-  let arr = [1, 4, 5, 6, 3, 2, 35, 7, 6, 5, 432]
+  let arr = [];
+  for (let i = 0; i < 10000; i++) {
+    arr[i] = Math.floor((Math.random() * 100) + 1);
+  }
 
   function swap(index1, index2) {
     let temp = arr[index1]
@@ -31,8 +34,11 @@
       // swap(outer,min)
     }
   }
+  let d1 = new Date().getTime();
   selectSort(arr);
+  let d2 = new Date().getTime();
   console.log(arr);
+  console.log(d2 - d1); //64
 </script>
 
 <body>
