@@ -7,6 +7,11 @@
   <title>Document</title>
 </head>
 <script>
+  let arr = [];
+  for (let i = 0; i < 10000; i++) {
+    arr[i] = Math.floor((Math.random() * 100) + 1);
+  }
+
   function insertionSort(arr) {
     let temp, inner;
     // 外层循环：外层循环是从1位置开始，依次遍历到最后
@@ -23,10 +28,11 @@
       arr[inner] = temp;
     }
   }
-
-  let arr = [1, 5, 2, 5, 76, 432, 64, 21];
+  let d1 = new Date().getTime();
   insertionSort(arr);
+  let d2 = new Date().getTime();
   console.log(arr);
+  console.log(d2 - d1); //40
 </script>
 
 <body>
