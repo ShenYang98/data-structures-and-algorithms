@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script>
+  function insertionSort(arr) {
+    let temp, inner;
+    for (let outer = 1; outer < arr.length; outer++) {
+      temp = arr[outer];
+      inner = outer;
+      while (inner > 0 && arr[inner - 1] >= temp) {
+        arr[inner] = arr[inner - 1];
+        inner--;
+      }
+      arr[inner] = temp;
+    }
+  }
+
+  let arr = [1, 5, 2, 5, 76, 432, 64, 21];
+  insertionSort(arr);
+  console.log(arr);
+</script>
+
+<body>
+
+</body>
+
+</html>
