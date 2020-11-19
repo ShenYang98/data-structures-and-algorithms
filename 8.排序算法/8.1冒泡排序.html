@@ -7,18 +7,25 @@
   <title>Document</title>
 </head>
 <script>
+  let arr = [];
+  for (let i = 0; i < 10000; i++) {
+    arr[i] = Math.floor((Math.random() * 100) + 1);
+  }
   let d1 = new Date().getTime();
-  let arr = [1, 5, 2, 6, 87, 4, 24, 64];
-  for (let j = 0; j < arr.length; j++) {
-    for (let i = 0; i < arr.length - 1 - j; i++) {
-      if (arr[i + 1] < arr[i]) {
-        [arr[i + 1], arr[i]] = [arr[i], arr[i + 1]];
+
+  function bubbleSort(arr) {
+    for (let j = 0; j < arr.length; j++) {
+      for (let i = 0; i < arr.length - 1 - j; i++) {
+        if (arr[i + 1] < arr[i]) {
+          [arr[i + 1], arr[i]] = [arr[i], arr[i + 1]];
+        }
       }
     }
   }
+  bubbleSort(arr);
   let d2 = new Date().getTime();
   console.log(arr);
-  console.log(d2-d1)
+  console.log(d2 - d1) //271
 </script>
 
 <body>
