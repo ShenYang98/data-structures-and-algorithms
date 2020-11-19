@@ -9,13 +9,17 @@
 <script>
   function insertionSort(arr) {
     let temp, inner;
+    // 外层循环：外层循环是从1位置开始，依次遍历到最后
     for (let outer = 1; outer < arr.length; outer++) {
+      // 记录选出的元素，放在变量temp中
       temp = arr[outer];
       inner = outer;
+      // 内层循环，不确定次数，使用while循环
       while (inner > 0 && arr[inner - 1] >= temp) {
         arr[inner] = arr[inner - 1];
         inner--;
       }
+      // 将选出的位置，放入temp元素
       arr[inner] = temp;
     }
   }
